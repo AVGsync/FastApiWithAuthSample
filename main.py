@@ -20,7 +20,7 @@ app.include_router(main_api_router)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins_regex=".*",  # Разрешить все источники (можно указать конкретные домены)
+    allow_origin_regex=".*",  # Разрешить все источники (можно указать конкретные домены)
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"], 
