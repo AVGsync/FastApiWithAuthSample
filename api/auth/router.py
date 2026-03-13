@@ -35,8 +35,8 @@ async def login_for_acess_token(
     key="refresh_token",
     value=refresh_token,
     httponly=True,  
-    # secure=True,              # Только HTTPS
-    samesite=None, 
+    secure=True,              # Только HTTPS
+    samesite="none", 
     max_age=60 * 60 * 24 * 7
   )
   return Token(access_token=access_token, token_type='bearer')
@@ -57,8 +57,8 @@ async def refresh_token(request: Request, response: Response, session: AsyncSess
       key="refresh_token",
       value=refresh_token,
       httponly=True,  
-      # secure=True,              # Только HTTPS
-      samesite=None, 
+      secure=True,              # Только HTTPS
+      samesite="none", 
       max_age=60 * 60 * 24 * 7
     )
   except:
