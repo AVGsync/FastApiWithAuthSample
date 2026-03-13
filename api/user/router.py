@@ -19,7 +19,7 @@ user_router = APIRouter()
 logger = getLogger(__name__)
 
 
-@user_router.post("/", response_model=ShowUser)
+@user_router.post("", response_model=ShowUser)
 async def create_new_user(
    body: UserCreate,
    session: AsyncSession = Depends(get_db)) -> ShowUser:
