@@ -25,10 +25,10 @@ async def login_for_acess_token(
     raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=f"Incorrect username or password")
   
   access_token = create_access_token(
-    data={"type": "access","sub": user.login , "id": str(user.id), "role": user.role}
+    data={"type": "access","sub": user.email , "id": str(user.id), "role": user.role}
   )
   refresh_token = create_refresh_token(
-    data={"type": "refresh","sub": user.login, "id": str(user.id), "role": user.role}
+    data={"type": "refresh","sub": user.email, "id": str(user.id), "role": user.role}
   )
 
   response.set_cookie(

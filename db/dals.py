@@ -14,16 +14,18 @@ class UserDAL:
   
   async def create_user(
       self,
-      login: str,
       email: str,
+      fullname: str,
+      about: Optional[str],
       # first_name: str,
       # middle_name: str,
       # last_name: str,
       hashed_password: str
       ) -> User:
     new_user = User(
-      login=login,
       email=email,
+      fullname=fullname,
+      about=about,
       # first_name=first_name,
       # middle_name=middle_name,
       # last_name=last_name,
@@ -56,7 +58,7 @@ class UserDAL:
       return user_row[0]
   
   async def get_user_by_login(self, login: str) -> Union[None, User]:
-    query = select(User).where(User.login == login)
+    query = select(User).where(User.email == login)
     result = await self.db_session.execute(query)
     user_row = result.fetchone()
     if user_row is not None:

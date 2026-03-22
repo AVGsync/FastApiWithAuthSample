@@ -21,7 +21,9 @@ class TunedModel(BaseModel):
 
 class ShowUser(TunedModel):
     id: uuid.UUID | None = None
-    login: str
+    email: EmailStr
+    about: str | None = None
+    fullname: str
     role: str 
     # is_active: bool | None = None
 
@@ -32,8 +34,9 @@ class ShowUser(TunedModel):
 #     last_name: str | None = None
     
 class UserCreate(BaseModel):
-    login: str
     email: EmailStr
+    fullname: str
+    about: str | None = None
     # first_name: str
     # middle_name: str
     # last_name: str

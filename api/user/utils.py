@@ -13,8 +13,9 @@ async def _create_new_user(body: UserCreate, session) -> ShowUser:
     async with session.begin():
         user_dal = UserDAL(session)
         user = await user_dal.create_user(
-            login=body.login,
             email=body.email,
+            fullname=body.fullname,
+            about=body.about,
             # first_name=body.first_name,
             # middle_name=body.middle_name,
             # last_name=body.last_name,
@@ -22,8 +23,9 @@ async def _create_new_user(body: UserCreate, session) -> ShowUser:
         )
         return ShowUser(
             id=user.id,
-            login=user.login,
             email=user.email,
+            about=user.about,
+            fullname=user.fullname,
             role=user.role,
             # is_active=user.is_active,
         )

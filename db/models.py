@@ -12,8 +12,7 @@ Base = declarative_base()
 
 
 class PortalRole(str, Enum):
-    ROLE_PORTAL_USER = "ROLE_PORTAL_USER"
-    ROLE_PORTAL_MODERATOR = "ROLE_PORTAL_MODERATOR"
+    ROLE_PORTAL_PSYCHOLOG = "ROLE_PORTAL_PSYCHOLOG"
     ROLE_PORTAL_ADMIN = "ROLE_PORTAL_ADMIN"
 
 
@@ -21,13 +20,14 @@ class User(Base):
    __tablename__ = "users"
    
    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-   login = Column(String, unique=True, nullable=False)
    email = Column(String, unique=True, nullable=False)
+   about = Column(Text, nullable=True)
+   fullname = Column(String, nullable=False)
 #    first_name = Column(String, nullable=False)
 #    middle_name = Column(String, nullable=False)
 #    last_name = Column(String, nullable=False)
    hashed_password = Column(String, nullable=False)
-   role = Column(String, default=PortalRole.ROLE_PORTAL_USER)
+   role = Column(String, default=PortalRole.ROLE_PORTAL_PSYCHOLOG)
 #    is_active = Column(Boolean, default=True)
 
 
